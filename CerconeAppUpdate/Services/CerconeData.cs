@@ -12,15 +12,15 @@ namespace CerconeClient.Services
 {
     public  class CerconeData
     {
-        public void UpdatePsjData()
+        public void UpdatePsjData(string path)
         {
             using HttpClient client = new HttpClient();
             HttpResponseMessage response = client.GetAsync("https://sheets.googleapis.com/v4/spreadsheets/1RY3WbHMMKznrKheDQYYrbnCIfk9ukOigpAR84cuUHIk/values/ROSTER?key=AIzaSyDbgaqwB_8Yt5FQdZdYg7_iLv2__1mmRtc").Result;
             var data = response.Content.ReadAsStringAsync().Result;
             var dto = JsonSerializer.Deserialize<GoogleSheetData>(data,new JsonSerializerOptions() { });
-            CreateFilesPsj(dto);
+            CreateFilesPsj(dto, path);
         }
-        private void CreateFilesPsj(GoogleSheetData dto)
+        private void CreateFilesPsj(GoogleSheetData dto,string path)
         {
             var pjs = new List<PjsInfo>();
             dto.values.Remove(dto.values.First());
@@ -31,9 +31,9 @@ namespace CerconeClient.Services
                 var pj=PjHelper.GetPjInfo(rows);
                 if(pj!=null)pjs.Add(pj);
             }
-            BuildLuaData(pjs);
+            BuildLuaData(pjs, path);
         }
-        private void BuildLuaData(List<PjsInfo> pjs) 
+        private void BuildLuaData(List<PjsInfo> pjs,string path) 
         {
             var strindToSave=ConvertToLua(pjs);
             File.WriteAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, @"CerconePjData.lua"), strindToSave);

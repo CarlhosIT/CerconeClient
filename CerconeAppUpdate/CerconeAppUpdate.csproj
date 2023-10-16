@@ -6,10 +6,26 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>Icono.ico</ApplicationIcon>
+    <Authors>Carlhos</Authors>
+    <Version>1</Version>
+    <PackageId>1D</PackageId>
+    <Company>Cercone</Company>
+    <Product>CerconeClient</Product>
+    <PackageIcon>Logo.jpg</PackageIcon>
+    <Description>Cliente cercone </Description>
+    <RepositoryUrl>https://github.com/CarlhosIT/CerconeClient</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="Icono.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Downloads\Logo.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

@@ -74,7 +74,7 @@ namespace CerconeClient.Helpers
         }
         private static int CountX(int start,int end, List<string> rows)
         {
-            int count = 0;.
+            int count = 0;
             var newStart = Math.Max(Math.Min(start, rows.Count - 1), 0);
             var newEnd = Math.Min(end, rows.Count - 1);
             if (newStart < start) return count;

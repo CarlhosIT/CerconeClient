@@ -53,5 +53,8 @@
         public int Persuacion { get; set; }
         public int Intimidacion { get; set; }
         public int Engano { get; set; }
+        public int Voluntad { get; set; }
+        public int Percepcion { get; set; }
+        public int Fuerza { get; set; }
     }
 }

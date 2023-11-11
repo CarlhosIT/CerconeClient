@@ -86,7 +86,10 @@ namespace CerconeClient.Services
                 luaStringBuilder.AppendLine($"            Sigilo={pj.HabilidadesNOCombatientes.Sigilo},");
                 luaStringBuilder.AppendLine($"            Persuacion={pj.HabilidadesNOCombatientes.Persuacion},");
                 luaStringBuilder.AppendLine($"            Intimidacion={pj.HabilidadesNOCombatientes.Intimidacion},");
-                luaStringBuilder.AppendLine($"            Engano={pj.HabilidadesNOCombatientes.Engano}");
+                luaStringBuilder.AppendLine($"            Engano={pj.HabilidadesNOCombatientes.Engano},");
+                luaStringBuilder.AppendLine($"            Voluntad={pj.HabilidadesNOCombatientes.Voluntad},");
+                luaStringBuilder.AppendLine($"            Percepcion={pj.HabilidadesNOCombatientes.Percepcion},");
+                luaStringBuilder.AppendLine($"            Fuerza={pj.HabilidadesNOCombatientes.Fuerza}");
                 luaStringBuilder.AppendLine("        }");
                 luaStringBuilder.AppendLine("    },");
             }

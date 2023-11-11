@@ -52,6 +52,10 @@ namespace CerconeClient.Helpers
             pj.HabilidadesNOCombatientes.Persuacion= CountX(52, 54, rows);
             pj.HabilidadesNOCombatientes.Intimidacion= CountX(55, 57, rows);
             pj.HabilidadesNOCombatientes.Engano= CountX(58, 60, rows);
+            pj.HabilidadesNOCombatientes.Voluntad= CountX(58, 60, rows);
+            pj.HabilidadesNOCombatientes.Voluntad= CountX(61, 63, rows);
+            pj.HabilidadesNOCombatientes.Percepcion= CountX(64, 66, rows);
+            pj.HabilidadesNOCombatientes.Fuerza= CountX(67, 69, rows);
 
             //DATA FINAL
 
@@ -127,12 +131,11 @@ namespace CerconeClient.Helpers
                 if (nivel == 1)
                 {
                     pj.Defensa++; // Sumamos uno a la defensa
-                    pj.HabilidadesNOCombatientes.Intimidacion++; // Sumamos uno a Intimidación
                 }
                 else if (nivel == 2)
                 {
                     pj.Defensa++; // Sumamos uno a la defensa
-                    pj.HabilidadesNOCombatientes.Intimidacion++; // Sumamos uno a Intimidación
+                    pj.HabilidadesNOCombatientes.Fuerza++; // Sumamos uno a Intimidación
                 }
                 else
                 {
@@ -152,6 +155,22 @@ namespace CerconeClient.Helpers
                 {
                     pj.Defensa++; // Sumamos uno a la defensa
                     pj.HabilidadesNOCombatientes.Persuacion++; // Sumamos uno a Persuasión
+                }
+                else
+                {
+                    // Otro caso si es necesario
+                }
+            }
+            else if (profesion == "Ingeniería")
+            {
+                int nivel = pj.ProfLevel;
+                // Validamos el nivel y hacemos los ajustes correspondientes
+                if (nivel >= 1)
+                {
+                    pj.HabilidadesNOCombatientes.InutilizarM++; // Sumamos uno a la defensa
+                }
+                else if (nivel == 3)
+                {
                 }
                 else
                 {

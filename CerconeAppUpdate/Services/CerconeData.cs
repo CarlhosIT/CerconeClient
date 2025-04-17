@@ -57,7 +57,7 @@ namespace CerconeClient.Services
                 luaStringBuilder.AppendLine($"            Armadura=\"{pj.DataGeneral.Armadura}\",");
                 luaStringBuilder.AppendLine($"            Rango=\"{pj.DataGeneral.Rango}\",");
                 luaStringBuilder.AppendLine($"            Orden=\"{pj.DataGeneral.Orden}\",");
-                luaStringBuilder.AppendLine($"            Especializacion=\"{pj.DataGeneral.Espeecializacion}\",");
+                luaStringBuilder.AppendLine($"            Arma=\"{pj.DataGeneral.Arma}\",");
                 luaStringBuilder.AppendLine($"            Profesion=\"{pj.DataGeneral.Profesion}\"");
                 luaStringBuilder.AppendLine("        },");
                 luaStringBuilder.AppendLine($"        ProfLevel={pj.ProfLevel},");
@@ -86,7 +86,7 @@ namespace CerconeClient.Services
                 luaStringBuilder.AppendLine($"            Sigilo={pj.HabilidadesNOCombatientes.Sigilo},");
                 luaStringBuilder.AppendLine($"            Persuacion={pj.HabilidadesNOCombatientes.Persuacion},");
                 luaStringBuilder.AppendLine($"            Intimidacion={pj.HabilidadesNOCombatientes.Intimidacion},");
-                luaStringBuilder.AppendLine($"            Engano={pj.HabilidadesNOCombatientes.Engano},");
+                // luaStringBuilder.AppendLine($"            Engano={pj.HabilidadesNOCombatientes.Engano},");
                 luaStringBuilder.AppendLine($"            Voluntad={pj.HabilidadesNOCombatientes.Voluntad},");
                 luaStringBuilder.AppendLine($"            Percepcion={pj.HabilidadesNOCombatientes.Percepcion},");
                 luaStringBuilder.AppendLine($"            Fuerza={pj.HabilidadesNOCombatientes.Fuerza}");

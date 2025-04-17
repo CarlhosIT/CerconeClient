@@ -28,50 +28,62 @@ namespace CerconeClient.Helpers
             pj.DataGeneral.Armadura = rows[7];
             pj.DataGeneral.Rango = rows[8];
             pj.DataGeneral.Orden = rows[9];
-            pj.DataGeneral.Espeecializacion = rows[10];
+            pj.DataGeneral.Arma = rows[10];
             pj.DataGeneral.Profesion = rows[11];
-            pj.Meritos.PorPorCampana = rows[12];
-            pj.Meritos.PorTaberna = rows[13];
-            pj.Meritos.PorMisiones = rows[14];
-            pj.Meritos.Otros = rows[15];
-            pj.Meritos.MeritosGastados = rows[16];
-            pj.Meritos.TotalMeritos = rows[17];
-            pj.Meritos.Misiones = rows[18];
+            pj.HP = rows[12];
+            pj.Defensa = rows[13];
+            pj.Magicka = rows[14];
+            pj.Meritos.PorPorCampana = rows[15];
+            pj.Meritos.PorTaberna = rows[16];
+            pj.Meritos.PorMisiones = rows[17];
+            pj.Meritos.Otros = rows[18];
+            pj.Meritos.MeritosGastados = rows[19];
+            pj.Meritos.TotalMeritos = rows[20];
+            pj.Meritos.Misiones = rows[21];
 
             //habilidades combatientes
-            pj.HabilidadesCombatientes.LinajeCercone = CountX(19, 21, rows);
-            pj.HabilidadesCombatientes.ArteDeGuerra = CountX(22, 27, rows);
-            pj.HabilidadesCombatientes.LeccionesClase = CountX(28, 36, rows);
+            pj.HabilidadesCombatientes.LinajeCercone = CountX(25, 27, rows);
+            pj.HabilidadesCombatientes.ArteDeGuerra = CountX(28, 34, rows);
+            pj.HabilidadesCombatientes.LeccionesClase = CountX(35, 43, rows);
             //prof skills
-            pj.ProfLevel = CountX(37, 39, rows);
+            pj.ProfLevel = CountX(22, 24, rows);
             //No combate skills
-            pj.HabilidadesNOCombatientes.Exploracion= CountX(40, 42, rows);
-            pj.HabilidadesNOCombatientes.Investigacion= CountX(43, 45, rows);
-            pj.HabilidadesNOCombatientes.InutilizarM= CountX(46, 48, rows);
-            pj.HabilidadesNOCombatientes.Sigilo= CountX(49, 51, rows);
-            pj.HabilidadesNOCombatientes.Persuacion= CountX(52, 54, rows);
-            pj.HabilidadesNOCombatientes.Intimidacion= CountX(55, 57, rows);
-            pj.HabilidadesNOCombatientes.Engano= CountX(58, 60, rows);
-            pj.HabilidadesNOCombatientes.Voluntad= CountX(58, 60, rows);
-            pj.HabilidadesNOCombatientes.Voluntad= CountX(61, 63, rows);
-            pj.HabilidadesNOCombatientes.Percepcion= CountX(64, 66, rows);
-            pj.HabilidadesNOCombatientes.Fuerza= CountX(67, 69, rows);
+            // pj.HabilidadesNOCombatientes.Exploracion= CountX(44, 45, rows);
+            // pj.HabilidadesNOCombatientes.Investigacion= CountX(46, 47, rows);
+            // pj.HabilidadesNOCombatientes.InutilizarM= CountX(48, 49, rows);
+            // pj.HabilidadesNOCombatientes.Sigilo= CountX(50, 51, rows);
+            // pj.HabilidadesNOCombatientes.Persuacion= CountX(52, 53, rows);
+            // pj.HabilidadesNOCombatientes.Intimidacion= CountX(54, 55, rows);
+            // pj.HabilidadesNOCombatientes.Voluntad= CountX(56, 67, rows);
+            // pj.HabilidadesNOCombatientes.Percepcion= CountX(68, 69, rows);
+            // pj.HabilidadesNOCombatientes.Fuerza= CountX(70, 71, rows);
+            pj.HabilidadesNOCombatientes.Exploracion= rows[45];
+            pj.HabilidadesNOCombatientes.Investigacion= rows[47];
+            pj.HabilidadesNOCombatientes.InutilizarM= rows[49];
+            pj.HabilidadesNOCombatientes.Sigilo= rows[51];
+            pj.HabilidadesNOCombatientes.Persuacion= rows[53];
+            pj.HabilidadesNOCombatientes.Intimidacion= rows[55];
+            pj.HabilidadesNOCombatientes.Voluntad= rows[57];
+            pj.HabilidadesNOCombatientes.Percepcion= rows[59];
+            pj.HabilidadesNOCombatientes.Fuerza= rows[61];
+            // pj.HabilidadesNOCombatientes.Engano= CountX(58, 60, rows);
+            // pj.HabilidadesNOCombatientes.Voluntad= CountX(61, 63, rows);
 
             //DATA FINAL
 
             pj.Ataque = "1D20";
-            pj.Defensa = 10;
-            pj.Magicka = 10;
-            pj.HP = ObtenerHP(pj.DataGeneral.Rango);
-            if (pj.DataGeneral.Armadura.Equals("Pesada"))
-            {
-                pj.Defensa = pj.Defensa + 6;
-            }
-            if (pj.DataGeneral.Armadura.Equals("Ligera"))
-            {
-                pj.Defensa = pj.Defensa + 3;
-                pj.Magicka = pj.Magicka + 3;
-            }
+            // pj.Defensa = 10;
+            // pj.Magicka = 10;
+            // pj.HP = ObtenerHP(pj.DataGeneral.Rango);
+            // if (pj.DataGeneral.Armadura.Equals("Pesada"))
+            // {
+            //     pj.Defensa = pj.Defensa + 6;
+            // }
+            // if (pj.DataGeneral.Armadura.Equals("Ligera"))
+            // {
+            //     pj.Defensa = pj.Defensa + 3;
+            //     pj.Magicka = pj.Magicka + 3;
+            // }
 
             pj=AddProfesionStatus(pj);
             return pj;
@@ -130,12 +142,12 @@ namespace CerconeClient.Helpers
                 // Validamos el nivel y hacemos los ajustes correspondientes
                 if (nivel == 1)
                 {
-                    pj.Defensa++; // Sumamos uno a la defensa
+                    // pj.Defensa++; // Sumamos uno a la defensa
                 }
                 else if (nivel == 2)
                 {
-                    pj.Defensa++; // Sumamos uno a la defensa
-                    pj.HabilidadesNOCombatientes.Fuerza++; // Sumamos uno a Intimidación
+                    // pj.Defensa++; // Sumamos uno a la defensa
+                    // pj.HabilidadesNOCombatientes.Fuerza++; // Sumamos uno a Intimidación
                 }
                 else
                 {
@@ -149,12 +161,12 @@ namespace CerconeClient.Helpers
                 // Validamos el nivel y hacemos los ajustes correspondientes
                 if (nivel == 1)
                 {
-                    pj.Defensa++; // Sumamos uno a la defensa
+                    // pj.Defensa++; // Sumamos uno a la defensa
                 }
                 else if (nivel == 3)
                 {
-                    pj.Defensa++; // Sumamos uno a la defensa
-                    pj.HabilidadesNOCombatientes.Persuacion++; // Sumamos uno a Persuasión
+                    // pj.Defensa++; // Sumamos uno a la defensa
+                    // pj.HabilidadesNOCombatientes.Persuacion++; // Sumamos uno a Persuasión
                 }
                 else
                 {
@@ -167,7 +179,7 @@ namespace CerconeClient.Helpers
                 // Validamos el nivel y hacemos los ajustes correspondientes
                 if (nivel >= 1)
                 {
-                    pj.HabilidadesNOCombatientes.InutilizarM++; // Sumamos uno a la defensa
+                    // pj.HabilidadesNOCombatientes.InutilizarM++; // Sumamos uno a la defensa
                 }
                 else if (nivel == 3)
                 {

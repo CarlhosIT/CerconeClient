@@ -144,7 +144,7 @@ namespace CerconeClient.Services
                 luaStringBuilder.AppendLine($"        NombreRama=\"{data.NombreRama?.Replace("\n", " ") ?? string.Empty}\",");
                 luaStringBuilder.AppendLine($"        Orden=\"{data.Orden?.Replace("\n", " ") ?? string.Empty}\",");
                 luaStringBuilder.AppendLine($"        Descripcion=\"{data.Descripcion?.Replace("\n", "\\n") ?? string.Empty}\",");
-                luaStringBuilder.AppendLine($"        Valores=\"{data.Valores?.Replace("\n", " ") ?? string.Empty}\",");
+                luaStringBuilder.AppendLine($"        Valores=\"{data.Valores?.Replace("\n", "\\n") ?? string.Empty}\",");
                 luaStringBuilder.AppendLine("    },");
             }
 

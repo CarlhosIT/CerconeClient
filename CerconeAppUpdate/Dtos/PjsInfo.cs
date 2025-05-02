@@ -5,7 +5,7 @@
         public string? Personaje { get; set; }
         public string? ID { get; set; }
         public DataGeneral? DataGeneral { get; set; }
-        public int ProfLevel { get; set; }
+        public string[]? ProfLevel { get; set; }
         public string? HP { get; set; }
         public string? Magicka { get; set; }
         public string? Ataque { get; set; }
@@ -40,9 +40,9 @@
     }
     public class HabilidadesCombatientes
     {
-        public int LinajeCercone { get; set; }
-        public int ArteDeGuerra { get; set; }
-        public int LeccionesClase { get; set; }
+        public string[]? LinajeCercone { get; set; }
+        public string[]? ArteDeGuerra { get; set; }
+        public string[]? LeccionesClase { get; set; }
     }
     public class HabilidadesNOCombatientes
     {

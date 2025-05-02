@@ -1,5 +1,4 @@
 ﻿using CerconeClient.Dtos;
-using System;
 using System.Collections.Generic;
 
 namespace CerconeClient.Helpers
@@ -39,11 +38,15 @@ namespace CerconeClient.Helpers
             pj.Meritos.Misiones = rows[21];
 
             //habilidades combatientes
-            pj.HabilidadesCombatientes.LinajeCercone = CountX(25, 27, rows);
-            pj.HabilidadesCombatientes.ArteDeGuerra = CountX(28, 34, rows);
-            pj.HabilidadesCombatientes.LeccionesClase = CountX(35, 43, rows);
+            // pj.HabilidadesCombatientes.LinajeCercone = CountX(25, 27, rows);
+            // pj.HabilidadesCombatientes.ArteDeGuerra = CountX(28, 34, rows);
+            // pj.HabilidadesCombatientes.LeccionesClase = CountX(35, 43, rows);
+            pj.HabilidadesCombatientes.LinajeCercone = new string[] { rows[25], rows[26], rows[27] };
+            pj.HabilidadesCombatientes.ArteDeGuerra = new string[] { rows[28], rows[29], rows[30], rows[31], rows[32], rows[33], rows[34] };
+            pj.HabilidadesCombatientes.LeccionesClase = new string[] { rows[35], rows[36], rows[37], rows[38], rows[39], rows[40], rows[41], rows[42], rows[43] };
             //prof skills
-            pj.ProfLevel = CountX(22, 24, rows);
+            // pj.ProfLevel = CountX(22, 24, rows);
+            pj.ProfLevel = new string[] { rows[22], rows[23], rows[24] };
             //No combate skills
             pj.HabilidadesNOCombatientes.Exploracion= rows[45];
             pj.HabilidadesNOCombatientes.Investigacion= rows[47];
@@ -58,22 +61,6 @@ namespace CerconeClient.Helpers
             //DATA FINAL
             pj.Ataque = "1D20";
             return pj;
-        }
-        private static int CountX(int start,int end, List<string> rows)
-        {
-            int count = 0;
-            var newStart = Math.Max(Math.Min(start, rows.Count - 1), 0);
-            var newEnd = Math.Min(end, rows.Count - 1);
-            if (newStart < start) return count;
-            for (int i = newStart; i <= newEnd; i++)
-            {
-                var value= rows[i];
-                if (value.Equals("x"))
-                {
-                    count++;
-                }
-            }
-            return count;
         }
         public static int ObtenerHP(string rango)
         {

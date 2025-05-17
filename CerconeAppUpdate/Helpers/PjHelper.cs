@@ -12,6 +12,7 @@ namespace CerconeClient.Helpers
             pj.Meritos = new MeritosInfo();
             pj.HabilidadesCombatientes = new HabilidadesCombatientes();
             pj.HabilidadesNOCombatientes = new HabilidadesNOCombatientes();
+            pj.Insignias = new Insignias();
 
             //Info General
             pj.Personaje = rows[0];
@@ -35,17 +36,13 @@ namespace CerconeClient.Helpers
             pj.Meritos.Otros = rows[18];
             pj.Meritos.MeritosGastados = rows[19];
             pj.Meritos.TotalMeritos = rows[20];
-            pj.Meritos.Misiones = rows[21];
+            pj.EliteOrden = rows[21];
 
             //habilidades combatientes
-            // pj.HabilidadesCombatientes.LinajeCercone = CountX(25, 27, rows);
-            // pj.HabilidadesCombatientes.ArteDeGuerra = CountX(28, 34, rows);
-            // pj.HabilidadesCombatientes.LeccionesClase = CountX(35, 43, rows);
             pj.HabilidadesCombatientes.LinajeCercone = new string[] { rows[25], rows[26], rows[27] };
             pj.HabilidadesCombatientes.ArteDeGuerra = new string[] { rows[28], rows[29], rows[30], rows[31], rows[32], rows[33], rows[34] };
             pj.HabilidadesCombatientes.LeccionesClase = new string[] { rows[35], rows[36], rows[37], rows[38], rows[39], rows[40], rows[41], rows[42], rows[43] };
             //prof skills
-            // pj.ProfLevel = CountX(22, 24, rows);
             pj.ProfLevel = new string[] { rows[22], rows[23], rows[24] };
             //No combate skills
             pj.HabilidadesNOCombatientes.Exploracion= rows[45];
@@ -57,6 +54,15 @@ namespace CerconeClient.Helpers
             pj.HabilidadesNOCombatientes.Voluntad= rows[57];
             pj.HabilidadesNOCombatientes.Percepcion= rows[59];
             pj.HabilidadesNOCombatientes.Fuerza= rows[61];
+            //Insignias
+            pj.Insignias.Inteligencia= rows.Count > 62 ? rows[62] ?? "" : "";
+            pj.Insignias.Pericia= rows.Count > 63 ? rows[63] ?? "" : "";
+            pj.Insignias.Discrecion= rows.Count > 64 ? rows[64] ?? "" : "";
+            pj.Insignias.Precision= rows.Count > 65 ? rows[65] ?? "" : "";
+            pj.Insignias.Fervor= rows.Count > 66 ? rows[66] ?? "" : "";
+            pj.Insignias.Expiacion= rows.Count > 67 ? rows[67] ?? "" : "";
+            pj.Insignias.Liderazgo= rows.Count > 68 ? rows[68] ?? "" : "";
+            pj.Insignias.Valentia= rows.Count > 69 ? rows[69] ?? "" : "";
 
             //DATA FINAL
             pj.Ataque = "1D20";

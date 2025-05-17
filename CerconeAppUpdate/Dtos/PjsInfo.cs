@@ -11,8 +11,10 @@
         public string? Ataque { get; set; }
         public string? Defensa { get; set; }
         public MeritosInfo? Meritos { get; set; }
+        public string? EliteOrden { get; set; }
         public HabilidadesCombatientes? HabilidadesCombatientes { get; set; }
         public HabilidadesNOCombatientes? HabilidadesNOCombatientes { get; set; }
+        public Insignias? Insignias { get; set; }
 
     }
     public class MeritosInfo
@@ -23,7 +25,6 @@
         public string? Otros { get; set; }
         public string? MeritosGastados { get; set; }
         public string? TotalMeritos { get; set; }
-        public string? Misiones { get; set; }
     }
     public class DataGeneral
     {
@@ -56,5 +57,16 @@
         public string? Voluntad { get; set; }
         public string? Percepcion { get; set; }
         public string? Fuerza { get; set; }
+    }
+    public class Insignias
+    {
+        public string? Inteligencia { get; set; }
+        public string? Pericia { get; set; }
+        public string? Discrecion { get; set; }
+        public string? Precision { get; set; }
+        public string? Fervor { get; set; }
+        public string? Expiacion { get; set; }
+        public string? Liderazgo { get; set; }
+        public string? Valentia { get; set; }
     }
 }

@@ -108,8 +108,8 @@ namespace CerconeClient.Services
                 luaStringBuilder.AppendLine($"            Otros=\"{pj.Meritos.Otros}\",");
                 luaStringBuilder.AppendLine($"            MeritosGastados=\"{pj.Meritos.MeritosGastados}\",");
                 luaStringBuilder.AppendLine($"            TotalMeritos=\"{pj.Meritos.TotalMeritos}\",");
-                luaStringBuilder.AppendLine($"            Misiones={pj.Meritos.Misiones}");
                 luaStringBuilder.AppendLine("        },");
+                luaStringBuilder.AppendLine($"       EliteOrden=\"{pj.EliteOrden}\",");
                 luaStringBuilder.AppendLine("        HabilidadesCombatientes={");
                 luaStringBuilder.AppendLine("            LinajeCercone={");
                 luaStringBuilder.AppendLine($"                              \"{pj.HabilidadesCombatientes.LinajeCercone[0]}\",");
@@ -136,8 +136,6 @@ namespace CerconeClient.Services
                 luaStringBuilder.AppendLine($"                              \"{pj.HabilidadesCombatientes.LeccionesClase[7]}\",");
                 luaStringBuilder.AppendLine($"                              \"{pj.HabilidadesCombatientes.LeccionesClase[8]}\",");
                 luaStringBuilder.AppendLine("            },");
-                // luaStringBuilder.AppendLine($"            ArteDeGuerra=\"{pj.HabilidadesCombatientes.ArteDeGuerra}\",");
-                // luaStringBuilder.AppendLine($"            LeccionesClase=\"{pj.HabilidadesCombatientes.LeccionesClase}\"");
                 luaStringBuilder.AppendLine("        },");
                 luaStringBuilder.AppendLine("        HabilidadesNOCombatientes={");
                 luaStringBuilder.AppendLine($"            Exploracion={pj.HabilidadesNOCombatientes.Exploracion},");
@@ -146,10 +144,19 @@ namespace CerconeClient.Services
                 luaStringBuilder.AppendLine($"            Sigilo={pj.HabilidadesNOCombatientes.Sigilo},");
                 luaStringBuilder.AppendLine($"            Persuacion={pj.HabilidadesNOCombatientes.Persuacion},");
                 luaStringBuilder.AppendLine($"            Intimidacion={pj.HabilidadesNOCombatientes.Intimidacion},");
-                // luaStringBuilder.AppendLine($"            Engano={pj.HabilidadesNOCombatientes.Engano},");
                 luaStringBuilder.AppendLine($"            Voluntad={pj.HabilidadesNOCombatientes.Voluntad},");
                 luaStringBuilder.AppendLine($"            Percepcion={pj.HabilidadesNOCombatientes.Percepcion},");
                 luaStringBuilder.AppendLine($"            Fuerza={pj.HabilidadesNOCombatientes.Fuerza}");
+                luaStringBuilder.AppendLine("        },");
+                luaStringBuilder.AppendLine("        Insignias={");
+                luaStringBuilder.AppendLine($"            Inteligencia=\"{pj.Insignias.Inteligencia}\",");
+                luaStringBuilder.AppendLine($"            Pericia=\"{pj.Insignias.Pericia}\",");
+                luaStringBuilder.AppendLine($"            Discrecion=\"{pj.Insignias.Discrecion}\",");
+                luaStringBuilder.AppendLine($"            Precision=\"{pj.Insignias.Precision}\",");
+                luaStringBuilder.AppendLine($"            Fervor=\"{pj.Insignias.Fervor}\",");
+                luaStringBuilder.AppendLine($"            Expiacion=\"{pj.Insignias.Expiacion}\",");
+                luaStringBuilder.AppendLine($"            Liderazgo=\"{pj.Insignias.Liderazgo}\",");
+                luaStringBuilder.AppendLine($"            Valentia=\"{pj.Insignias.Valentia}\",");
                 luaStringBuilder.AppendLine("        }");
                 luaStringBuilder.AppendLine("    },");
             }

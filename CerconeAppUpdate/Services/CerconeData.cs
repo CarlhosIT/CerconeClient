@@ -149,14 +149,14 @@ namespace CerconeClient.Services
                 luaStringBuilder.AppendLine($"            Fuerza={pj.HabilidadesNOCombatientes.Fuerza}");
                 luaStringBuilder.AppendLine("        },");
                 luaStringBuilder.AppendLine("        Insignias={");
-                luaStringBuilder.AppendLine($"            Inteligencia=\"{pj.Insignias.Inteligencia}\",");
-                luaStringBuilder.AppendLine($"            Pericia=\"{pj.Insignias.Pericia}\",");
-                luaStringBuilder.AppendLine($"            Discrecion=\"{pj.Insignias.Discrecion}\",");
-                luaStringBuilder.AppendLine($"            Precision=\"{pj.Insignias.Precision}\",");
-                luaStringBuilder.AppendLine($"            Fervor=\"{pj.Insignias.Fervor}\",");
-                luaStringBuilder.AppendLine($"            Expiacion=\"{pj.Insignias.Expiacion}\",");
-                luaStringBuilder.AppendLine($"            Liderazgo=\"{pj.Insignias.Liderazgo}\",");
-                luaStringBuilder.AppendLine($"            Valentia=\"{pj.Insignias.Valentia}\",");
+                luaStringBuilder.AppendLine($"                      \"{pj.Insignias.Inteligencia}\",");
+                luaStringBuilder.AppendLine($"                      \"{pj.Insignias.Pericia}\",");
+                luaStringBuilder.AppendLine($"                      \"{pj.Insignias.Discrecion}\",");
+                luaStringBuilder.AppendLine($"                      \"{pj.Insignias.Precision}\",");
+                luaStringBuilder.AppendLine($"                      \"{pj.Insignias.Fervor}\",");
+                luaStringBuilder.AppendLine($"                      \"{pj.Insignias.Expiacion}\",");
+                luaStringBuilder.AppendLine($"                      \"{pj.Insignias.Liderazgo}\",");
+                luaStringBuilder.AppendLine($"                      \"{pj.Insignias.Valentia}\",");
                 luaStringBuilder.AppendLine("        }");
                 luaStringBuilder.AppendLine("    },");
             }

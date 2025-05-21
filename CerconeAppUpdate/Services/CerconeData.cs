@@ -17,34 +17,50 @@ namespace CerconeClient.Services
         public void UpdatePsjData(string path)
         {
             using HttpClient client = new HttpClient();
-            string[] sheets = new string[2]
-            { 
-            "https://sheets.googleapis.com/v4/spreadsheets/1RY3WbHMMKznrKheDQYYrbnCIfk9ukOigpAR84cuUHIk/values/ROSTER?key=AIzaSyDbgaqwB_8Yt5FQdZdYg7_iLv2__1mmRtc", 
-            "https://sheets.googleapis.com/v4/spreadsheets/1RY3WbHMMKznrKheDQYYrbnCIfk9ukOigpAR84cuUHIk/values/GRIMORIO?key=AIzaSyDbgaqwB_8Yt5FQdZdYg7_iLv2__1mmRtc" 
+            string[] sheets = new string[3]
+            {
+            "https://sheets.googleapis.com/v4/spreadsheets/1RY3WbHMMKznrKheDQYYrbnCIfk9ukOigpAR84cuUHIk/values/ROSTER?key=AIzaSyDbgaqwB_8Yt5FQdZdYg7_iLv2__1mmRtc",
+            "https://sheets.googleapis.com/v4/spreadsheets/1RY3WbHMMKznrKheDQYYrbnCIfk9ukOigpAR84cuUHIk/values/GRIMORIO?key=AIzaSyDbgaqwB_8Yt5FQdZdYg7_iLv2__1mmRtc",
+            "https://sheets.googleapis.com/v4/spreadsheets/1RY3WbHMMKznrKheDQYYrbnCIfk9ukOigpAR84cuUHIk/values/Misiones?key=AIzaSyDbgaqwB_8Yt5FQdZdYg7_iLv2__1mmRtc"
             };
 
             HttpResponseMessage response = client.GetAsync(sheets[0]).Result;
             HttpResponseMessage grimoireResponse = client.GetAsync(sheets[1]).Result;
+            HttpResponseMessage missionResponse = client.GetAsync(sheets[2]).Result;
 
             var rosterData = response.Content.ReadAsStringAsync().Result;
             var grimoireData = grimoireResponse.Content.ReadAsStringAsync().Result;
+            var missionData = missionResponse.Content.ReadAsStringAsync().Result;
+
             var dto = JsonSerializer.Deserialize<GoogleSheetData>(rosterData, new JsonSerializerOptions() { });
             var grimoireDto = JsonSerializer.Deserialize<GoogleSheetData>(grimoireData, new JsonSerializerOptions() { });
-            CreateFilesPsj(dto!, grimoireDto!, path);
+            var missionDto = JsonSerializer.Deserialize<GoogleSheetData>(missionData, new JsonSerializerOptions() { });
+
+            CreateFilesDtos(dto!, grimoireDto!,missionDto!, path);
+
         }
-        private void CreateFilesPsj(GoogleSheetData dto, GoogleSheetData grimoireDto, string path)
+        private void CreateFilesDtos(GoogleSheetData dto, GoogleSheetData grimoireDto, GoogleSheetData missionDto, string path)
         {
             var pjs = new List<PjsInfo>();
             var grimoire = new List<GrimoireInfo>();
+            var missions = new List<MissionInfo>();
             dto.values.Remove(dto.values.First());
             dto.values.Remove(dto.values.First());
             grimoireDto.values.Remove(grimoireDto.values.First());
+            missionDto.values.Remove(missionDto.values.First());
 
             foreach (var rows in dto.values)
             {
                 if (rows[0] == "") continue;
                 var pj = PjHelper.GetPjInfo(rows);
                 if (pj != null) pjs.Add(pj);
+            }
+
+            foreach (var row in missionDto.values)
+            {
+                if (row[0] == "") continue;
+                var mission = MissionHelper.GetMissionInfo(row);
+                if (mission != null) missions.Add(mission);
             }
 
             foreach (var rows in grimoireDto.values)
@@ -60,15 +76,17 @@ namespace CerconeClient.Services
                 }
             }
 
-            BuildLuaData(pjs, grimoire, path);
+            BuildLuaData(pjs, grimoire, missions, path);
         }
 
-        private void BuildLuaData(List<PjsInfo> pjs, List<GrimoireInfo> grimoire, string path)
+        private void BuildLuaData(List<PjsInfo> pjs, List<GrimoireInfo> grimoire, List<MissionInfo> missions,string path)
         {
             var strindToSave = ConvertPjsToLua(pjs);
             var strindToSave2 = ConvertGrimToLua(grimoire);
+            var strindToSave3 = ConvertMissionToLua(missions);
             File.WriteAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, @"CerconePjData.lua"), strindToSave);
             File.WriteAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, @"CerconeGrimData.lua"), strindToSave2);
+            File.WriteAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, @"CerconeTablonMisiones.lua"), strindToSave3);
         }
         private string ConvertPjsToLua(List<PjsInfo> pjs)
         {
@@ -180,6 +198,28 @@ namespace CerconeClient.Services
                 luaStringBuilder.AppendLine($"        Orden=\"{data.Orden?.Replace("\n", " ") ?? string.Empty}\",");
                 luaStringBuilder.AppendLine($"        Descripcion=\"{data.Descripcion?.Replace("\n", "\\n") ?? string.Empty}\",");
                 luaStringBuilder.AppendLine($"        Valores=\"{data.Valores?.Replace("\n", "\\n") ?? string.Empty}\",");
+                luaStringBuilder.AppendLine("    },");
+            }
+
+            luaStringBuilder.AppendLine("}");
+
+            return luaStringBuilder.ToString();
+        }
+
+        private static string ConvertMissionToLua(List<MissionInfo> missions)
+        {
+            StringBuilder luaStringBuilder = new StringBuilder();
+
+            luaStringBuilder.AppendLine("CerconeTablonMisiones = {");
+            foreach (var data in missions)
+            {
+                luaStringBuilder.AppendLine($"    {{");
+                luaStringBuilder.AppendLine($"        Pagina=\"{data.Pagina?.Replace("\n", " ") ?? string.Empty}\",");
+                luaStringBuilder.AppendLine($"        Slot=\"{data.Slot?.Replace("\n", " ") ?? string.Empty}\",");
+                luaStringBuilder.AppendLine($"        Estilo=\"{data.Estilo?.Replace("\n", " ") ?? string.Empty}\",");
+                luaStringBuilder.AppendLine($"        Titulo=\"{data.Titulo?.Replace("\n", " ") ?? string.Empty}\",");
+                luaStringBuilder.AppendLine($"        Texto=\"{data.Texto?.Replace("\n", "\\n") ?? string.Empty}\",");
+                luaStringBuilder.AppendLine($"        Requisitos=\"{data.Requisitos?.Replace("\n", "\\n") ?? string.Empty}\",");
                 luaStringBuilder.AppendLine("    },");
             }
 

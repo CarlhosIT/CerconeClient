@@ -1,6 +1,6 @@
-# Conversor de DataSheet para el Addon Casa Cercone
+# Conversor de DataSheet para el Clan Cercone Addon
 
-Este programa descarga la información del DataSheet alojado en Google Drive y la convierte en un objeto en formato **Lua**, que puede ser leído por el addon **Clan Cercone Addon** para *The Elder Scrolls Online*.
+Este programa descarga la información del DataSheet alojado en Google Drive y la convierte en un objeto en formato **Lua**, que puede ser leído por el **Clan Cercone Addon** para *The Elder Scrolls Online*.
 
 ## 🛠️ Compilación
 

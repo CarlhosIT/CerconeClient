@@ -214,8 +214,8 @@ namespace CerconeClient.Services
             foreach (var data in missions)
             {
                 luaStringBuilder.AppendLine($"    {{");
-                luaStringBuilder.AppendLine($"        Pagina=\"{data.Pagina?.Replace("\n", " ") ?? string.Empty}\",");
-                luaStringBuilder.AppendLine($"        Slot=\"{data.Slot?.Replace("\n", " ") ?? string.Empty}\",");
+                luaStringBuilder.AppendLine($"        Pagina={data.Pagina?.Replace("\n", " ")},");
+                luaStringBuilder.AppendLine($"        Slot={data.Slot?.Replace("\n", " ")},");
                 luaStringBuilder.AppendLine($"        Estilo=\"{data.Estilo?.Replace("\n", " ") ?? string.Empty}\",");
                 luaStringBuilder.AppendLine($"        Titulo=\"{data.Titulo?.Replace("\n", " ") ?? string.Empty}\",");
                 luaStringBuilder.AppendLine($"        Texto=\"{data.Texto?.Replace("\n", "\\n") ?? string.Empty}\",");

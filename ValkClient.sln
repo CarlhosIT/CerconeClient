@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CerconeAppUpdate", "CerconeAppUpdate\CerconeAppUpdate.csproj", "{0058483A-3837-4BF9-B78C-B3BA4BD053AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValkClient", "ValkClient\ValkClient.csproj", "{0058483A-3837-4BF9-B78C-B3BA4BD053AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

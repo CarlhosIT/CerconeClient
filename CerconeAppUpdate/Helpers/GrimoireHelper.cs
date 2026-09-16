@@ -7,16 +7,20 @@ namespace CerconeClient.Helpers
     {
         public static GrimoireInfo? GetGrimoireInfo(List<string> rows)
         {
-            var grimoire = new GrimoireInfo();
-            grimoire.Z = rows[0];
-            grimoire.NombreClase = rows[1];
-            grimoire.NombreRama = rows[2];
-            grimoire.Orden = rows[3];
-            grimoire.Descripcion = rows[4];
-            grimoire.Valores = rows[5];
+            var grimoire = new GrimoireInfo
+            {
+                Z           = Col(rows, 0),
+                NombreClase = Col(rows, 1),
+                NombreRama  = Col(rows, 2),
+                Orden       = Col(rows, 3),
+                Descripcion = Col(rows, 4),
+                Valores     = Col(rows, 5)
+            };
 
             return grimoire;
         }
+
+        private static string Col(List<string> rows, int i) => i < rows.Count ? rows[i] ?? "" : "";
 
     }
 }

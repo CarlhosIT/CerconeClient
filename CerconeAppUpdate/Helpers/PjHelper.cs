@@ -5,94 +5,70 @@ namespace CerconeClient.Helpers
 {
     public static class PjHelper
     {
+    
+
         public static PjsInfo? GetPjInfo(List<string> rows)
         {
-            var pj = new PjsInfo();
-            pj.DataGeneral = new DataGeneral();
-            pj.Meritos = new MeritosInfo();
-            pj.HabilidadesCombatientes = new HabilidadesCombatientes();
-            pj.HabilidadesNOCombatientes = new HabilidadesNOCombatientes();
-            pj.Insignias = new Insignias();
 
+            var pj = new PjsInfo
+            {
+                DataGeneral = new DataGeneral(),
+                HabilidadesCombatientes = new HabilidadesCombatientes(),
+                HabilidadesNOCombatientes = new HabilidadesNOCombatientes(),
+                TitulosNobiliarios = new TitulosNobiliarios(),
+
+                Personaje   = Col(rows, 0),
+                ID          = Col(rows, 1)
+            };
+            
             //Info General
-            pj.Personaje = rows[0];
-            pj.ID = rows[1];
-            pj.DataGeneral.Raza = rows[3];
-            pj.DataGeneral.Clase = rows[2];
-            pj.DataGeneral.Nacimiento = rows[4];
-            pj.DataGeneral.FechaConvercion = rows[5];
-            pj.DataGeneral.Sire = rows[6];
-            pj.DataGeneral.Armadura = rows[7];
-            pj.DataGeneral.Rango = rows[8];
-            pj.DataGeneral.Orden = rows[9];
-            pj.DataGeneral.Arma = rows[10];
-            pj.DataGeneral.Profesion = rows[11];
-            pj.HP = rows[12];
-            pj.Defensa = rows[13];
-            pj.Magicka = rows[14];
-            pj.Meritos.PorPorCampana = rows[15];
-            pj.Meritos.PorTaberna = rows[16];
-            pj.Meritos.PorMisiones = rows[17];
-            pj.Meritos.Otros = rows[18];
-            pj.Meritos.MeritosGastados = rows[19];
-            pj.Meritos.TotalMeritos = rows[20];
-            pj.EliteOrden = rows[21];
+            pj.DataGeneral.Clase                = Col(rows, 2);
+            pj.DataGeneral.Raza                 = Col(rows, 3);
+            pj.DataGeneral.Nacimiento           = Col(rows, 4);
+            pj.DataGeneral.FechaConvercion      = Col(rows, 5);
+            pj.DataGeneral.Sire                 = Col(rows, 6);
+            pj.DataGeneral.Condicion            = Col(rows, 7);
+            pj.DataGeneral.NCasaNobiliaria      = Col(rows, 8);
+            pj.DataGeneral.EspCasaNobiliaria    = Col(rows, 9);
+            pj.DataGeneral.TituloNobiliario     = Col(rows, 10);
+            pj.DataGeneral.Rango                = Col(rows, 11);
+            pj.DataGeneral.Profesion            = Col(rows, 12);
+            pj.DataGeneral.Arma                 = Col(rows, 13);
+            pj.DataGeneral.Armadura             = Col(rows, 14);
+            pj.HP                               = Col(rows, 15);
+            pj.Def                              = Col(rows, 16);
+            pj.Mag                              = Col(rows, 17);
+            pj.Valkens                          = [Col(rows, 18), Col(rows, 19)];
 
             //habilidades combatientes
-            pj.HabilidadesCombatientes.LinajeCercone = new string[] { rows[25], rows[26], rows[27] };
-            pj.HabilidadesCombatientes.ArteDeGuerra = new string[] { rows[28], rows[29], rows[30], rows[31], rows[32], rows[33], rows[34] };
-            pj.HabilidadesCombatientes.LeccionesClase = new string[] { rows[35], rows[36], rows[37], rows[38], rows[39], rows[40], rows[41], rows[42], rows[43] };
-            //prof skills
-            pj.ProfLevel = new string[] { rows[22], rows[23], rows[24] };
+            pj.HabilidadesCombatientes.EspCasaNobiliaria = Col(rows, 20);
+            pj.HabilidadesCombatientes.Linaje            = [Col(rows, 21), Col(rows, 22), Col(rows, 23)];
+            pj.HabilidadesCombatientes.ArteDeGuerra      = [Col(rows, 24), Col(rows, 25), Col(rows, 26), Col(rows, 27), Col(rows, 28), Col(rows, 29), Col(rows, 30)];
+            pj.HabilidadesCombatientes.LeccionesClase    = [Col(rows, 31), Col(rows, 32), Col(rows, 33), Col(rows, 34), Col(rows, 35), Col(rows, 36), Col(rows, 37), Col(rows, 38), Col(rows, 39)];
             //No combate skills
-            pj.HabilidadesNOCombatientes.Exploracion= rows[45];
-            pj.HabilidadesNOCombatientes.Investigacion= rows[47];
-            pj.HabilidadesNOCombatientes.InutilizarM= rows[49];
-            pj.HabilidadesNOCombatientes.Sigilo= rows[51];
-            pj.HabilidadesNOCombatientes.Persuacion= rows[53];
-            pj.HabilidadesNOCombatientes.Intimidacion= rows[55];
-            pj.HabilidadesNOCombatientes.Voluntad= rows[57];
-            pj.HabilidadesNOCombatientes.Percepcion= rows[59];
-            pj.HabilidadesNOCombatientes.Fuerza= rows[61];
-            //Insignias
-            pj.Insignias.Inteligencia= rows.Count > 62 ? rows[62] ?? "" : "";
-            pj.Insignias.Pericia= rows.Count > 63 ? rows[63] ?? "" : "";
-            pj.Insignias.Discrecion= rows.Count > 64 ? rows[64] ?? "" : "";
-            pj.Insignias.Precision= rows.Count > 65 ? rows[65] ?? "" : "";
-            pj.Insignias.Fervor= rows.Count > 66 ? rows[66] ?? "" : "";
-            pj.Insignias.Expiacion= rows.Count > 67 ? rows[67] ?? "" : "";
-            pj.Insignias.Liderazgo= rows.Count > 68 ? rows[68] ?? "" : "";
-            pj.Insignias.Valentia= rows.Count > 69 ? rows[69] ?? "" : "";
-
+            pj.HabilidadesNOCombatientes.Exploracion    = [Col(rows, 40), Col(rows, 41)];
+            pj.HabilidadesNOCombatientes.Investigacion  = [Col(rows, 42), Col(rows, 43)];
+            pj.HabilidadesNOCombatientes.InutilizarM    = [Col(rows, 44), Col(rows, 45)];
+            pj.HabilidadesNOCombatientes.Sigilo         = [Col(rows, 46), Col(rows, 47)];
+            pj.HabilidadesNOCombatientes.Persuacion     = [Col(rows, 48), Col(rows, 49)];
+            pj.HabilidadesNOCombatientes.Intimidacion   = [Col(rows, 50), Col(rows, 51)];
+            pj.HabilidadesNOCombatientes.Voluntad       = [Col(rows, 52), Col(rows, 53)];
+            pj.HabilidadesNOCombatientes.Percepcion     = [Col(rows, 54), Col(rows, 55)];
+            pj.HabilidadesNOCombatientes.Fuerza         = [Col(rows, 56), Col(rows, 57)];
+            //Titulos Nobiliarios
+            pj.TitulosNobiliarios.Lord      = Col(rows, 58);
+            pj.TitulosNobiliarios.Baron     = Col(rows, 59);
+            pj.TitulosNobiliarios.Vizconde  = Col(rows, 60);
+            pj.TitulosNobiliarios.Conde     = Col(rows, 61);
+            pj.TitulosNobiliarios.Marques   = Col(rows, 62);
+            pj.TitulosNobiliarios.Duque     = Col(rows, 63);
             //DATA FINAL
             pj.Ataque = "1D20";
             return pj;
         }
-        public static int ObtenerHP(string rango)
-        {
-            Dictionary<string, int> hpPorRango = new Dictionary<string, int>()
-            {
-                {"Iniciado", 10},
-                {"Vástago", 12},
-                {"Vasallo", 14},
-                {"Ejecutor", 16},
-                {"Veterano", 18},
-                {"Adalid", 20},
-                {"Primogenito", 20},
-                {"Regente", 20},
-                {"Sanguinaris", 16},
-                {"Recluta", 14}
-            };
 
-            if (hpPorRango.ContainsKey(rango))
-            {
-                return hpPorRango[rango];
-            }
-            else
-            {
-                // Manejo de caso no encontrado, puedes devolver un valor predeterminado o lanzar una excepción
-                return 10;
-            }
-        }
+        //Guardia por si las celdas estan completamente vacias, devuelve ""
+        private static string Col(List<string> rows, int i) => i < rows.Count ? rows[i] ?? "" : "";
+
     }
 }

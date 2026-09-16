@@ -1,5 +1,6 @@
 ﻿using CerconeClient.Services;
 using System;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -12,38 +13,50 @@ namespace CerconeAppUpdate
             InitializeComponent();
         }
 
-        private void UpdateData_Click(object sender, EventArgs e)
+        private async void UpdateData_Click(object sender, EventArgs e)
         {
-            var client = new CerconeData();
-            client.UpdatePsjData(label1.Text);
-            MostrarMensaje(sender, e);
-        }
-        private void MostrarMensaje(object sender, EventArgs e)
-        {
-            MessageBox.Show("La actualizacion se realizo correctamente", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UpdateData.Enabled = false;
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                var client = new CerconeData();
+                await client.UpdatePsjDataAsync(label1.Text);
+                MessageBox.Show("La actualización se realizó correctamente", "Confirmación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"No se pudo actualizar:\n\n{ex.Message}", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+                UpdateData.Enabled = true;
+            }
         }
 
         private void PonerRuta_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialogo = new FolderBrowserDialog();
-
-            dialogo.Description = "Selecciona una carpeta";
-            dialogo.RootFolder = Environment.SpecialFolder.MyComputer;
-            dialogo.ShowNewFolderButton = false;
-
-            DialogResult resultado = dialogo.ShowDialog();
-
-            if (resultado == DialogResult.OK)
+            FolderBrowserDialog Dialogo = new FolderBrowserDialog
             {
-                string rutaCarpeta = dialogo.SelectedPath;
-                label1.Text= rutaCarpeta;
+                Description = "Selecciona una carpeta",
+                RootFolder = Environment.SpecialFolder.MyComputer,
+                ShowNewFolderButton = false
+            };
+
+            DialogResult Resultado = Dialogo.ShowDialog();
+
+            if (Resultado == DialogResult.OK)
+            {
+                string RutaCarpeta = Dialogo.SelectedPath;
+                label1.Text= RutaCarpeta;
             }
         }
 
         private void CerconeMenu_Load(object sender, EventArgs e)
         {
-            var path=Assembly.GetExecutingAssembly().Location;
-            label1.Text = path;
+            label1.Text = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
         }
     }
 }

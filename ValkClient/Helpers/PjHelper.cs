@@ -12,10 +12,10 @@ namespace ValkClient.Helpers
 
             var pj = new PjsInfo
             {
-                DataGeneral = new DataGeneral(),
-                HabilidadesCombatientes = new HabilidadesCombatientes(),
-                HabilidadesNOCombatientes = new HabilidadesNOCombatientes(),
-                TitulosNobiliarios = new TitulosNobiliarios(),
+                DataGeneral                 = new DataGeneral(),
+                HabilidadesCombatientes     = new HabilidadesCombatientes(),
+                HabilidadesNOCombatientes   = new HabilidadesNOCombatientes(),
+                TitulosNobiliarios          = new TitulosNobiliarios(),
 
                 Personaje   = Col(rows, 0),
                 ID          = Col(rows, 1)

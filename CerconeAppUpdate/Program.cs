@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CerconeAppUpdate
+namespace ValkClient
 {
     internal static class Program
     {
@@ -17,7 +17,7 @@ namespace CerconeAppUpdate
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CerconeMenu());
+            Application.Run(new ValkMenu());
         }
     }
 }

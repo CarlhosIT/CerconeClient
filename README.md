@@ -16,8 +16,9 @@ dotnet publish -r win-x64 -c Release --self-contained false
 ```
 
 ## Uso
-Ejecutar `CerconeAppUpdate.exe` y persionar **Actualizar**. Genera tres archivos junto al ejecutable (o la carpeta seleccionada).
 
-- `CerconePjData.lua` - fichas de personaje
-- `CerconeGrimData.lua` - grimorio
-- `CerconeTablonMisiones.lua` - tablón de misiones
+Ejecutar `ValkClient.exe` y presionar **Actualizar**. Genera tres archivos junto al ejecutable (o la carpeta seleccionada).
+
+- `ValkPjData.lua` - fichas de personaje
+- `ValkGrimData.lua` - grimorio
+- `ValkTablonMisiones.lua` - tablón de misiones

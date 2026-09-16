@@ -1,5 +1,5 @@
-﻿using CerconeClient.Dtos;
-using CerconeClient.Helpers;
+﻿using ValkClient.Dtos;
+using ValkClient.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,9 +11,9 @@ using System.Text.Json;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 
-namespace CerconeClient.Services
+namespace ValkClient.Services
 {
-    public class CerconeData
+    public class ValkData
     {
         public async Task UpdatePsjDataAsync(string path)
         {
@@ -107,15 +107,15 @@ namespace CerconeClient.Services
             var luaMisiones = ConvertMissionToLua(missions);
             var endpoint = Directory.Exists(path) ? path : Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
 
-            File.WriteAllText(Path.Combine(endpoint, "CerconePjData.lua"), luaPjs);
-            File.WriteAllText(Path.Combine(endpoint, "CerconeGrimData.lua"), luaGrimorio);
-            File.WriteAllText(Path.Combine(endpoint, "CerconeTablonMisiones.lua"), luaMisiones);
+            File.WriteAllText(Path.Combine(endpoint, "ValkPjData.lua"), luaPjs);
+            File.WriteAllText(Path.Combine(endpoint, "ValkGrimData.lua"), luaGrimorio);
+            File.WriteAllText(Path.Combine(endpoint, "ValkTablonMisiones.lua"), luaMisiones);
         }
         private string ConvertPjsToLua(List<PjsInfo> pjs)
         {
             StringBuilder luaStringBuilder = new StringBuilder();
 
-            luaStringBuilder.AppendLine("ValkadianPjData = {");
+            luaStringBuilder.AppendLine("ValkPjData = {");
             foreach (var pj in pjs)
             {
                 luaStringBuilder.AppendLine($"    {{");
@@ -205,7 +205,7 @@ namespace CerconeClient.Services
         {
             StringBuilder luaStringBuilder = new StringBuilder();
 
-            luaStringBuilder.AppendLine("CerconeGrimoireData = {");
+            luaStringBuilder.AppendLine("ValkGrimoireData = {");
             foreach (var data in grimoire)
             {
                 luaStringBuilder.AppendLine($"    {{");
@@ -227,7 +227,7 @@ namespace CerconeClient.Services
         {
             StringBuilder luaStringBuilder = new StringBuilder();
 
-            luaStringBuilder.AppendLine("CerconeTablonMisiones = {");
+            luaStringBuilder.AppendLine("ValkTablonMisiones = {");
             foreach (var data in missions)
             {
                 luaStringBuilder.AppendLine($"    {{");

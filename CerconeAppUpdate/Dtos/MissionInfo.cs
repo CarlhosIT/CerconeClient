@@ -1,4 +1,4 @@
-namespace CerconeClient.Dtos
+namespace ValkClient.Dtos
 {
     public class MissionInfo
     {

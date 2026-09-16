@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CerconeClient.Dtos
+namespace ValkClient.Dtos
 {
     public class GoogleSheetData
     {

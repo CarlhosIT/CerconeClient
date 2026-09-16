@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using CerconeClient.Dtos;
+using ValkClient.Dtos;
 
-namespace CerconeClient.Helpers
+namespace ValkClient.Helpers
 {
     public static class MissionHelper
     {

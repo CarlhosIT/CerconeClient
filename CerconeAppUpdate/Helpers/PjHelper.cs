@@ -1,7 +1,7 @@
-﻿using CerconeClient.Dtos;
+﻿using ValkClient.Dtos;
 using System.Collections.Generic;
 
-namespace CerconeClient.Helpers
+namespace ValkClient.Helpers
 {
     public static class PjHelper
     {

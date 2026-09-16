@@ -1,14 +1,14 @@
-﻿using CerconeClient.Services;
+﻿using ValkClient.Services;
 using System;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace CerconeAppUpdate
+namespace ValkClient
 {
-    public partial class CerconeMenu : Form
+    public partial class ValkMenu : Form
     {
-        public CerconeMenu()
+        public ValkMenu()
         {
             InitializeComponent();
         }
@@ -19,7 +19,7 @@ namespace CerconeAppUpdate
             Cursor = Cursors.WaitCursor;
             try
             {
-                var client = new CerconeData();
+                var client = new ValkData();
                 await client.UpdatePsjDataAsync(label1.Text);
                 MessageBox.Show("La actualización se realizó correctamente", "Confirmación",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -54,7 +54,7 @@ namespace CerconeAppUpdate
             }
         }
 
-        private void CerconeMenu_Load(object sender, EventArgs e)
+        private void ValkMenu_Load(object sender, EventArgs e)
         {
             label1.Text = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
         }

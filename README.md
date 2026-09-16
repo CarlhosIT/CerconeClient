@@ -1,10 +1,23 @@
-# Conversor de DataSheet para el Clan Cercone Addon
+# Conversor de DataSheet para el Valk Addon
 
-Este programa descarga la información del DataSheet alojado en Google Drive y la convierte en un objeto en formato **Lua**, que puede ser leído por el **Clan Cercone Addon** para *The Elder Scrolls Online*.
+Descarga la información del DataSheet en Google Sheets y la convierte en tablas **Lua** que el addon lee dentro de *The Elder Scrolls Online*
 
-## 🛠️ Compilación
+## Requisitos
+
+- [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) (solo para ejecutar)
+- .NET 10 SDK (solo para compilar)
+
+## Compilación
 
 Para compilar el proyecto, utiliza el siguiente comando:
 
 ```bash
 dotnet publish -r win-x64 -c Release --self-contained false
+```
+
+## Uso
+Ejecutar `CerconeAppUpdate.exe` y persionar **Actualizar**. Genera tres archivos junto al ejecutable (o la carpeta seleccionada).
+
+- `CerconePjData.lua` - fichas de personaje
+- `CerconeGrimData.lua` - grimorio
+- `CerconeTablonMisiones.lua` - tablón de misiones
